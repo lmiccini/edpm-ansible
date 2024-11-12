@@ -1,4 +1,8 @@
 ---
+- name: Wait for connection
+  ansible.builtin.wait_for_connection:
+    delay: "{{ edpm_wait_for_connection_delay | default(10) }}"
+    timeout: "{{ edpm_wait_for_connection_timeout | default(600) }}"
 
 - name: Re-read facts
   ansible.builtin.setup:

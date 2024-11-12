@@ -19,6 +19,11 @@
   tags:
     - edpm_users
   block:
+    - name: Wait for connection
+      ansible.builtin.wait_for_connection:
+        delay: "{{ edpm_wait_for_connection_delay | default(10) }}"
+        timeout: "{{ edpm_wait_for_connection_timeout | default(600) }}"
+
     - name: Detect when user exists and cannot be created
       ansible.builtin.getent:
         database: passwd
