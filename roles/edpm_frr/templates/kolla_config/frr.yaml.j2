@@ -1,4 +1,4 @@
-command: bash -c $* -- eval if [ -f /usr/libexec/frr/frrinit.sh ]; then /usr/libexec/frr/frrinit.sh start; else /usr/lib/frr/frr start; fi  && exec /bin/sleep infinity
+command: bash -c $* -- eval /usr/libexec/frr/frrinit.sh start && tail -n+1 -F /var/log/frr/frr.log
 config_files:
   - source: "/var/lib/kolla/config_files/src/etc/frr/*"
     dest: /etc/frr/
