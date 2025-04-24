@@ -60,3 +60,12 @@
     state: directory
     selevel: s0
     setype: container_file_t
+
+- name: Enable ipv6 forwarding
+  ansible.posix.sysctl:
+    name: net.ipv6.conf.all.forwarding
+    value: '1'
+    sysctl_set: true
+    sysctl_file: /etc/sysctl.d/99-edpm.conf
+    state: present
+    reload: true
