@@ -5,6 +5,7 @@ Description=InstanceHA heartbeat timer
 [Timer]
 OnBootSec=10s
 OnUnitActiveSec={{ edpm_instanceha_monitoring_heartbeat_interval }}s
+RandomizedDelaySec={{ edpm_instanceha_monitoring_heartbeat_interval }}s
 
 [Install]
 WantedBy=timers.target
